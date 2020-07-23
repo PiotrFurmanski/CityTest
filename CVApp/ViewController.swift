@@ -12,7 +12,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let service = CvService()
+        service.getCvList { response in
+            switch response {
+            case .success(let cvFiles):
+                service.getCv(for: cvFiles["pfcv1.json"]?.url ?? "") { (response) in
+                    print(response)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
 
