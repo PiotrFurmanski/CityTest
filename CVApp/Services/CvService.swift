@@ -26,7 +26,7 @@ class CvService: CvServiceProtocol {
     func getCvList(completion: @escaping (Result<[String: CvFile], Error>) -> Void) {
         guard let url = URL(string: Constanst.url) else { return }
         
-        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let error = error {
                 completion(.failure(error))
@@ -57,7 +57,7 @@ class CvService: CvServiceProtocol {
     func getCv(for url: String, completion: @escaping (Result<CvModel, Error>) -> Void) {
         guard let url = URL(string: url) else { return }
         
-        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let error = error {
                 completion(.failure(error))

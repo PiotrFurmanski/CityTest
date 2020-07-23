@@ -9,12 +9,12 @@
 import Foundation
 
 struct CvListResponse: Codable {
-    var files: [String: CvFile]
+    let files: [String: CvFile]
 }
 
 struct CvFile: Codable {
-    var filename: String
-    var url: String
+    let filename: String
+    let url: String
     
     private enum CodingKeys: String, CodingKey {
         case filename

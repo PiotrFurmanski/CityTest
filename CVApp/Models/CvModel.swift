@@ -9,28 +9,28 @@
 import Foundation
 
 struct CvModel: Codable {
-    var summary: String?
-    var personalData: PersonalData
-    var education: [String: Education]
-    var experience: [String: Experience]
+    let summary: String?
+    let personalData: PersonalData
+    let education: [String: Education]
+    let experience: [String: Experience]
 }
 
 struct PersonalData: Codable {
-    var firstName: String
-    var lastName: String
-    var country: String
-    var city: String
-    var phoneNumber: String?
+    let firstName: String
+    let lastName: String
+    let country: String
+    let city: String
+    let phoneNumber: String?
 }
 
 struct Education: Codable {
-    var startDate: Int
-    var endDate: Int
+    let startDate: Int
+    let endDate: Int
 }
 
 struct Experience: Codable {
-    var startDate: Int
-    var endDate: Int
-    var role: String
-    var description: String
+    let startDate: Int
+    let endDate: Int
+    let role: String
+    let description: String
 }
