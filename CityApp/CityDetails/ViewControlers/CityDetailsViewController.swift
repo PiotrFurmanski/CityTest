@@ -1,5 +1,5 @@
 //
-//  CvDetailsViewController.swift
+//  CityDetailsViewController.swift
 //  CVApp
 //
 //  Created by Piotr Furmanski on 23/07/2020.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CvDetailsViewController: UIViewController {
+class CityDetailsViewController: UIViewController {
     
-    var cvFile: CvFile?
+    var cityModel: CityModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()

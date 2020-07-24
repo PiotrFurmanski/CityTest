@@ -13,18 +13,19 @@ enum ServiceError: Error {
 }
 
 
-protocol CvServiceProtocol: AnyObject {
-    func getCvList(completion: @escaping (Result<[String: CvFile], Error>) -> Void)
-    func getCv(for url: String, completion: @escaping (Result<CvModel, Error>) -> Void)
+protocol CityServiceProtocol: AnyObject {
+    func getCityList(completion: @escaping (Result<[CityModel], Error>) -> Void)
+    func getCity(for url: String, completion: @escaping (Result<CityModel, Error>) -> Void)
 }
 
-class CvService: CvServiceProtocol {
+class CityService: CityServiceProtocol {
     private struct Constanst {
-        static let url = "https://api.github.com/users/piotrfurmanski/gists"
+        static let baseUrl = "https://gist.githubusercontent.com/PiotrFurmanski/"
+        static let cityListEndpoint = "115dd75791870216934e3d27e919367f/raw/b1c901bde7341cc9ef3622fd3a0d8ddeaa1d9895/cityList"
     }
     
-    func getCvList(completion: @escaping (Result<[String: CvFile], Error>) -> Void) {
-        guard let url = URL(string: Constanst.url) else { return }
+    func getCityList(completion: @escaping (Result<[CityModel], Error>) -> Void) {
+        guard let url = URL(string: "\(Constanst.baseUrl)\(Constanst.cityListEndpoint)") else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
@@ -40,12 +41,9 @@ class CvService: CvServiceProtocol {
             
             do {
                 let decoder = JSONDecoder()
-                let response = try decoder.decode([CvListResponse].self, from: data)
-                if let files = response.first?.files {
-                    completion(.success(files))
-                } else {
-                    completion(.failure(ServiceError.emptyData))
-                }
+                let response = try decoder.decode(CityListResponse.self, from: data)
+
+                completion(.success(response.cityList))
                 
             } catch let error {
                 completion(.failure(error))
@@ -54,7 +52,7 @@ class CvService: CvServiceProtocol {
         task.resume()
     }
     
-    func getCv(for url: String, completion: @escaping (Result<CvModel, Error>) -> Void) {
+    func getCity(for url: String, completion: @escaping (Result<CityModel, Error>) -> Void) {
         guard let url = URL(string: url) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -71,8 +69,8 @@ class CvService: CvServiceProtocol {
             
             do {
                 let decoder = JSONDecoder()
-                let cvModel = try decoder.decode(CvModel.self, from: data)
-                completion(.success(cvModel))
+                let cityModel = try decoder.decode(CityModel.self, from: data)
+                completion(.success(cityModel))
             } catch let error {
                 completion(.failure(error))
             }

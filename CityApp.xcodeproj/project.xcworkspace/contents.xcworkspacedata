@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:CVApp.xcodeproj">
+      location = "self:/Users/sncvsrtoip/Documents/Development/CVApp/CityApp.xcodeproj">
    </FileRef>
 </Workspace>

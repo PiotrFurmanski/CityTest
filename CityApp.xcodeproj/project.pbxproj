@@ -7,19 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6F0FFD7224CA2F2C003567D6 /* CvListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0FFD7124CA2F2C003567D6 /* CvListCell.swift */; };
-		6FD6EF6224CA329300C350B3 /* CvDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD6EF6124CA329300C350B3 /* CvDetailsViewController.swift */; };
+		6F0FFD7224CA2F2C003567D6 /* CityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0FFD7124CA2F2C003567D6 /* CityListCell.swift */; };
+		6FD6EF6224CA329300C350B3 /* CityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD6EF6124CA329300C350B3 /* CityDetailsViewController.swift */; };
+		6FD6EF6424CB31D700C350B3 /* CityListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD6EF6324CB31D700C350B3 /* CityListCellViewModel.swift */; };
 		6FDEC6E024C9D64200B2510D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC6DF24C9D64200B2510D /* AppDelegate.swift */; };
 		6FDEC6E224C9D64200B2510D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC6E124C9D64200B2510D /* SceneDelegate.swift */; };
-		6FDEC6E424C9D64200B2510D /* CvListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC6E324C9D64200B2510D /* CvListViewController.swift */; };
+		6FDEC6E424C9D64200B2510D /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC6E324C9D64200B2510D /* CityListViewController.swift */; };
 		6FDEC6E724C9D64200B2510D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FDEC6E524C9D64200B2510D /* Main.storyboard */; };
 		6FDEC6E924C9D64700B2510D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FDEC6E824C9D64700B2510D /* Assets.xcassets */; };
 		6FDEC6EC24C9D64700B2510D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FDEC6EA24C9D64700B2510D /* LaunchScreen.storyboard */; };
-		6FDEC6F724C9D64700B2510D /* CVAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC6F624C9D64700B2510D /* CVAppTests.swift */; };
-		6FDEC70324C9E02200B2510D /* CvService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC70224C9E02200B2510D /* CvService.swift */; };
-		6FDEC70624C9E55100B2510D /* CvListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC70524C9E55100B2510D /* CvListResponse.swift */; };
-		6FDEC70824CA1C0100B2510D /* CvModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC70724CA1C0100B2510D /* CvModel.swift */; };
-		6FDEC70B24CA24C700B2510D /* CvListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC70A24CA24C700B2510D /* CvListViewModel.swift */; };
+		6FDEC6F724C9D64700B2510D /* CityAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC6F624C9D64700B2510D /* CityAppTests.swift */; };
+		6FDEC70324C9E02200B2510D /* CityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC70224C9E02200B2510D /* CityService.swift */; };
+		6FDEC70624C9E55100B2510D /* CityListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC70524C9E55100B2510D /* CityListResponse.swift */; };
+		6FDEC70824CA1C0100B2510D /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC70724CA1C0100B2510D /* CityModel.swift */; };
+		6FDEC70B24CA24C700B2510D /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDEC70A24CA24C700B2510D /* CityListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,23 +34,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6F0FFD7124CA2F2C003567D6 /* CvListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvListCell.swift; sourceTree = "<group>"; };
-		6FD6EF6124CA329300C350B3 /* CvDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvDetailsViewController.swift; sourceTree = "<group>"; };
-		6FDEC6DC24C9D64200B2510D /* CVApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CVApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F0FFD7124CA2F2C003567D6 /* CityListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCell.swift; sourceTree = "<group>"; };
+		6FD6EF6124CA329300C350B3 /* CityDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewController.swift; sourceTree = "<group>"; };
+		6FD6EF6324CB31D700C350B3 /* CityListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCellViewModel.swift; sourceTree = "<group>"; };
+		6FDEC6DC24C9D64200B2510D /* CityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FDEC6DF24C9D64200B2510D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FDEC6E124C9D64200B2510D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6FDEC6E324C9D64200B2510D /* CvListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvListViewController.swift; sourceTree = "<group>"; };
+		6FDEC6E324C9D64200B2510D /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
 		6FDEC6E624C9D64200B2510D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6FDEC6E824C9D64700B2510D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FDEC6EB24C9D64700B2510D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FDEC6ED24C9D64700B2510D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6FDEC6F224C9D64700B2510D /* CVAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CVAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FDEC6F624C9D64700B2510D /* CVAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVAppTests.swift; sourceTree = "<group>"; };
+		6FDEC6F224C9D64700B2510D /* CityAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FDEC6F624C9D64700B2510D /* CityAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAppTests.swift; sourceTree = "<group>"; };
 		6FDEC6F824C9D64700B2510D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6FDEC70224C9E02200B2510D /* CvService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvService.swift; sourceTree = "<group>"; };
-		6FDEC70524C9E55100B2510D /* CvListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvListResponse.swift; sourceTree = "<group>"; };
-		6FDEC70724CA1C0100B2510D /* CvModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvModel.swift; sourceTree = "<group>"; };
-		6FDEC70A24CA24C700B2510D /* CvListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvListViewModel.swift; sourceTree = "<group>"; };
+		6FDEC70224C9E02200B2510D /* CityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityService.swift; sourceTree = "<group>"; };
+		6FDEC70524C9E55100B2510D /* CityListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListResponse.swift; sourceTree = "<group>"; };
+		6FDEC70724CA1C0100B2510D /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		6FDEC70A24CA24C700B2510D /* CityListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,33 +75,33 @@
 		6F0FFD7024CA2F21003567D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6F0FFD7124CA2F2C003567D6 /* CvListCell.swift */,
+				6F0FFD7124CA2F2C003567D6 /* CityListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		6FD6EF5D24CA320300C350B3 /* CvList */ = {
+		6FD6EF5D24CA320300C350B3 /* CityList */ = {
 			isa = PBXGroup;
 			children = (
 				6FD6EF5F24CA325800C350B3 /* ViewControlers */,
 				6FDEC70924CA24A700B2510D /* ViewModels */,
 				6F0FFD7024CA2F21003567D6 /* Views */,
 			);
-			path = CvList;
+			path = CityList;
 			sourceTree = "<group>";
 		};
-		6FD6EF5E24CA322100C350B3 /* CvDetails */ = {
+		6FD6EF5E24CA322100C350B3 /* CityDetails */ = {
 			isa = PBXGroup;
 			children = (
 				6FD6EF6024CA327900C350B3 /* ViewControlers */,
 			);
-			path = CvDetails;
+			path = CityDetails;
 			sourceTree = "<group>";
 		};
 		6FD6EF5F24CA325800C350B3 /* ViewControlers */ = {
 			isa = PBXGroup;
 			children = (
-				6FDEC6E324C9D64200B2510D /* CvListViewController.swift */,
+				6FDEC6E324C9D64200B2510D /* CityListViewController.swift */,
 			);
 			path = ViewControlers;
 			sourceTree = "<group>";
@@ -107,7 +109,7 @@
 		6FD6EF6024CA327900C350B3 /* ViewControlers */ = {
 			isa = PBXGroup;
 			children = (
-				6FD6EF6124CA329300C350B3 /* CvDetailsViewController.swift */,
+				6FD6EF6124CA329300C350B3 /* CityDetailsViewController.swift */,
 			);
 			path = ViewControlers;
 			sourceTree = "<group>";
@@ -115,8 +117,8 @@
 		6FDEC6D324C9D64200B2510D = {
 			isa = PBXGroup;
 			children = (
-				6FDEC6DE24C9D64200B2510D /* CVApp */,
-				6FDEC6F524C9D64700B2510D /* CVAppTests */,
+				6FDEC6DE24C9D64200B2510D /* CityApp */,
+				6FDEC6F524C9D64700B2510D /* CityAppTests */,
 				6FDEC6DD24C9D64200B2510D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -124,17 +126,17 @@
 		6FDEC6DD24C9D64200B2510D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6FDEC6DC24C9D64200B2510D /* CVApp.app */,
-				6FDEC6F224C9D64700B2510D /* CVAppTests.xctest */,
+				6FDEC6DC24C9D64200B2510D /* CityApp.app */,
+				6FDEC6F224C9D64700B2510D /* CityAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6FDEC6DE24C9D64200B2510D /* CVApp */ = {
+		6FDEC6DE24C9D64200B2510D /* CityApp */ = {
 			isa = PBXGroup;
 			children = (
-				6FD6EF5E24CA322100C350B3 /* CvDetails */,
-				6FD6EF5D24CA320300C350B3 /* CvList */,
+				6FD6EF5E24CA322100C350B3 /* CityDetails */,
+				6FD6EF5D24CA320300C350B3 /* CityList */,
 				6FDEC70424C9E53500B2510D /* Models */,
 				6FDEC70124C9E00D00B2510D /* Services */,
 				6FDEC6DF24C9D64200B2510D /* AppDelegate.swift */,
@@ -144,22 +146,22 @@
 				6FDEC6EA24C9D64700B2510D /* LaunchScreen.storyboard */,
 				6FDEC6ED24C9D64700B2510D /* Info.plist */,
 			);
-			path = CVApp;
+			path = CityApp;
 			sourceTree = "<group>";
 		};
-		6FDEC6F524C9D64700B2510D /* CVAppTests */ = {
+		6FDEC6F524C9D64700B2510D /* CityAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				6FDEC6F624C9D64700B2510D /* CVAppTests.swift */,
+				6FDEC6F624C9D64700B2510D /* CityAppTests.swift */,
 				6FDEC6F824C9D64700B2510D /* Info.plist */,
 			);
-			path = CVAppTests;
+			path = CityAppTests;
 			sourceTree = "<group>";
 		};
 		6FDEC70124C9E00D00B2510D /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				6FDEC70224C9E02200B2510D /* CvService.swift */,
+				6FDEC70224C9E02200B2510D /* CityService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -167,8 +169,8 @@
 		6FDEC70424C9E53500B2510D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6FDEC70524C9E55100B2510D /* CvListResponse.swift */,
-				6FDEC70724CA1C0100B2510D /* CvModel.swift */,
+				6FDEC70524C9E55100B2510D /* CityListResponse.swift */,
+				6FDEC70724CA1C0100B2510D /* CityModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -176,7 +178,8 @@
 		6FDEC70924CA24A700B2510D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				6FDEC70A24CA24C700B2510D /* CvListViewModel.swift */,
+				6FDEC70A24CA24C700B2510D /* CityListViewModel.swift */,
+				6FD6EF6324CB31D700C350B3 /* CityListCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -184,9 +187,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6FDEC6DB24C9D64200B2510D /* CVApp */ = {
+		6FDEC6DB24C9D64200B2510D /* CityApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6FDEC6FB24C9D64700B2510D /* Build configuration list for PBXNativeTarget "CVApp" */;
+			buildConfigurationList = 6FDEC6FB24C9D64700B2510D /* Build configuration list for PBXNativeTarget "CityApp" */;
 			buildPhases = (
 				6FDEC6D824C9D64200B2510D /* Sources */,
 				6FDEC6D924C9D64200B2510D /* Frameworks */,
@@ -196,14 +199,14 @@
 			);
 			dependencies = (
 			);
-			name = CVApp;
+			name = CityApp;
 			productName = CVApp;
-			productReference = 6FDEC6DC24C9D64200B2510D /* CVApp.app */;
+			productReference = 6FDEC6DC24C9D64200B2510D /* CityApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6FDEC6F124C9D64700B2510D /* CVAppTests */ = {
+		6FDEC6F124C9D64700B2510D /* CityAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6FDEC6FE24C9D64700B2510D /* Build configuration list for PBXNativeTarget "CVAppTests" */;
+			buildConfigurationList = 6FDEC6FE24C9D64700B2510D /* Build configuration list for PBXNativeTarget "CityAppTests" */;
 			buildPhases = (
 				6FDEC6EE24C9D64700B2510D /* Sources */,
 				6FDEC6EF24C9D64700B2510D /* Frameworks */,
@@ -214,9 +217,9 @@
 			dependencies = (
 				6FDEC6F424C9D64700B2510D /* PBXTargetDependency */,
 			);
-			name = CVAppTests;
+			name = CityAppTests;
 			productName = CVAppTests;
-			productReference = 6FDEC6F224C9D64700B2510D /* CVAppTests.xctest */;
+			productReference = 6FDEC6F224C9D64700B2510D /* CityAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -238,7 +241,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6FDEC6D724C9D64200B2510D /* Build configuration list for PBXProject "CVApp" */;
+			buildConfigurationList = 6FDEC6D724C9D64200B2510D /* Build configuration list for PBXProject "CityApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -251,8 +254,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6FDEC6DB24C9D64200B2510D /* CVApp */,
-				6FDEC6F124C9D64700B2510D /* CVAppTests */,
+				6FDEC6DB24C9D64200B2510D /* CityApp */,
+				6FDEC6F124C9D64700B2510D /* CityAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -282,14 +285,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F0FFD7224CA2F2C003567D6 /* CvListCell.swift in Sources */,
-				6FDEC70B24CA24C700B2510D /* CvListViewModel.swift in Sources */,
-				6FDEC70324C9E02200B2510D /* CvService.swift in Sources */,
-				6FD6EF6224CA329300C350B3 /* CvDetailsViewController.swift in Sources */,
-				6FDEC6E424C9D64200B2510D /* CvListViewController.swift in Sources */,
-				6FDEC70624C9E55100B2510D /* CvListResponse.swift in Sources */,
+				6F0FFD7224CA2F2C003567D6 /* CityListCell.swift in Sources */,
+				6FD6EF6424CB31D700C350B3 /* CityListCellViewModel.swift in Sources */,
+				6FDEC70B24CA24C700B2510D /* CityListViewModel.swift in Sources */,
+				6FDEC70324C9E02200B2510D /* CityService.swift in Sources */,
+				6FD6EF6224CA329300C350B3 /* CityDetailsViewController.swift in Sources */,
+				6FDEC6E424C9D64200B2510D /* CityListViewController.swift in Sources */,
+				6FDEC70624C9E55100B2510D /* CityListResponse.swift in Sources */,
 				6FDEC6E024C9D64200B2510D /* AppDelegate.swift in Sources */,
-				6FDEC70824CA1C0100B2510D /* CvModel.swift in Sources */,
+				6FDEC70824CA1C0100B2510D /* CityModel.swift in Sources */,
 				6FDEC6E224C9D64200B2510D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,7 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FDEC6F724C9D64700B2510D /* CVAppTests.swift in Sources */,
+				6FDEC6F724C9D64700B2510D /* CityAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +311,7 @@
 /* Begin PBXTargetDependency section */
 		6FDEC6F424C9D64700B2510D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6FDEC6DB24C9D64200B2510D /* CVApp */;
+			target = 6FDEC6DB24C9D64200B2510D /* CityApp */;
 			targetProxy = 6FDEC6F324C9D64700B2510D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -452,13 +456,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6GX9AQ665K;
-				INFOPLIST_FILE = CVApp/Info.plist;
+				INFOPLIST_FILE = CityApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pfurmans.CVApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pfurmans.CityApp;
+				PRODUCT_NAME = CityApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -470,13 +474,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6GX9AQ665K;
-				INFOPLIST_FILE = CVApp/Info.plist;
+				INFOPLIST_FILE = CityApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pfurmans.CVApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pfurmans.CityApp;
+				PRODUCT_NAME = CityApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -500,7 +504,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CVApp.app/CVApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CityApp.app/CityApp";
 			};
 			name = Debug;
 		};
@@ -522,14 +526,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CVApp.app/CVApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CityApp.app/CityApp";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6FDEC6D724C9D64200B2510D /* Build configuration list for PBXProject "CVApp" */ = {
+		6FDEC6D724C9D64200B2510D /* Build configuration list for PBXProject "CityApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FDEC6F924C9D64700B2510D /* Debug */,
@@ -538,7 +542,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6FDEC6FB24C9D64700B2510D /* Build configuration list for PBXNativeTarget "CVApp" */ = {
+		6FDEC6FB24C9D64700B2510D /* Build configuration list for PBXNativeTarget "CityApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FDEC6FC24C9D64700B2510D /* Debug */,
@@ -547,7 +551,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6FDEC6FE24C9D64700B2510D /* Build configuration list for PBXNativeTarget "CVAppTests" */ = {
+		6FDEC6FE24C9D64700B2510D /* Build configuration list for PBXNativeTarget "CityAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6FDEC6FF24C9D64700B2510D /* Debug */,

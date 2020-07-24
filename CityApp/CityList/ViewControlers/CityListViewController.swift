@@ -1,5 +1,5 @@
 //
-//  CvListViewController.swift
+//  CityListViewController.swift
 //  CVApp
 //
 //  Created by Piotr Furmanski on 23/07/2020.
@@ -8,22 +8,22 @@
 
 import UIKit
 
-class CvListViewController: UIViewController {
+class CityListViewController: UIViewController {
     
-    private typealias CvListDataSource = CvListViewModelProtocol & UICollectionViewDataSource &
+    private typealias CityListDataSource = CityListViewModelProtocol & UICollectionViewDataSource &
                                          UICollectionViewDelegate
     
     private struct Constants {
-        static let cvDetails = "cvDetails"
+        static let cityDetails = "cityDetails"
         static let ok = "OK"
     }
     
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var cvCollectionView: UICollectionView!
+    @IBOutlet weak var cityCollectionView: UICollectionView!
     
-    private lazy var viewModel: CvListDataSource = {
-        return CvListViewModel(service: CvService(), delegate: self)
+    private lazy var viewModel: CityListDataSource = {
+        return CityListViewModel(service: CityService(), delegate: self)
     }()
     
     override func viewDidLoad() {
@@ -33,15 +33,15 @@ class CvListViewController: UIViewController {
     }
     
     private func setupData() {
-        cvCollectionView.dataSource = viewModel
-        cvCollectionView.delegate = viewModel
+        cityCollectionView.dataSource = viewModel
+        cityCollectionView.delegate = viewModel
         viewModel.loadData()
     }
     
     private func setupCollectionView() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        cvCollectionView.refreshControl = refreshControl
+        cityCollectionView.refreshControl = refreshControl
     }
     
     @objc func refresh() {
@@ -49,25 +49,25 @@ class CvListViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == Constants.cvDetails,
-            let cvDetailsVC = segue.destination as? CvDetailsViewController,
-            let cvFile = sender as? CvFile else { return }
-        cvDetailsVC.cvFile = cvFile
+        guard segue.identifier == Constants.cityDetails,
+            let cityDetailsVC = segue.destination as? CityDetailsViewController,
+            let cityModel = sender as? CityModel else { return }
+        cityDetailsVC.cityModel = cityModel
     }
 }
 
-extension CvListViewController: CvListViewProtocol {
+extension CityListViewController: CityListViewProtocol {
     func reload() {
-        cvCollectionView.reloadData()
+        cityCollectionView.reloadData()
     }
     
-    func showDetails(for cv: CvFile) {
-        performSegue(withIdentifier: Constants.cvDetails, sender: cv)
+    func showDetails(for city: CityModel) {
+        performSegue(withIdentifier: Constants.cityDetails, sender: city)
     }
 
     func stopLoadingIndicator() {
         loadingIndicator.stopAnimating()
-        cvCollectionView.refreshControl?.endRefreshing()
+        cityCollectionView.refreshControl?.endRefreshing()
     }
     
     func show(error: String) {

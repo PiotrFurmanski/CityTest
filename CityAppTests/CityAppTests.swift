@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import CVApp
+@testable import CityApp
 
-class CVAppTests: XCTestCase {
+class CityAppTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

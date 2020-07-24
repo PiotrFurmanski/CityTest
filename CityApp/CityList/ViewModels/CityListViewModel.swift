@@ -1,5 +1,5 @@
 //
-//  CvListViewModel.swift
+//  CityListViewModel.swift
 //  CVApp
 //
 //  Created by Piotr Furmanski on 23/07/2020.
@@ -8,35 +8,35 @@
 
 import UIKit
 
-protocol CvListViewProtocol: AnyObject {
+protocol CityListViewProtocol: AnyObject {
     func reload()
-    func showDetails(for cv: CvFile)
+    func showDetails(for city: CityModel)
     func stopLoadingIndicator()
     func show(error: String)
 }
 
-protocol CvListViewModelProtocol: AnyObject {
+protocol CityListViewModelProtocol: AnyObject {
     func loadData()
 }
 
-class CvListViewModel: NSObject, CvListViewModelProtocol {
-    private(set) var cvFiles = [CvFile]()
+class CityListViewModel: NSObject, CityListViewModelProtocol {
+    private(set) var cityModels = [CityModel]()
     
-    private weak var delegate: CvListViewProtocol?
-    private let service: CvServiceProtocol
+    private weak var delegate: CityListViewProtocol?
+    private let service: CityServiceProtocol
     
-    init(service: CvServiceProtocol, delegate: CvListViewProtocol) {
+    init(service: CityServiceProtocol, delegate: CityListViewProtocol) {
         self.service = service
         self.delegate = delegate
     }
     
     func loadData() {
-        service.getCvList { [weak self] response in
+        service.getCityList { [weak self] response in
             guard let strongSelf = self else { return }
             
             switch response {
-            case .success(let cvFiles):
-                strongSelf.cvFiles = cvFiles.map { $0.value }
+            case .success(let cityModels):
+                strongSelf.cityModels = cityModels
                 DispatchQueue.main.async {
                     strongSelf.delegate?.stopLoadingIndicator()
                     strongSelf.delegate?.reload()
@@ -52,21 +52,21 @@ class CvListViewModel: NSObject, CvListViewModelProtocol {
     
 }
 
-extension CvListViewModel: UICollectionViewDataSource, UICollectionViewDelegate {
+extension CityListViewModel: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return cvFiles.count
+        return cityModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CvListCell.self),
-                                                            for: indexPath) as? CvListCell else { return UICollectionViewCell() }
-        cell.setup(cv: cvFiles[indexPath.row])
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CityListCell.self),
+                                                            for: indexPath) as? CityListCell else { return UICollectionViewCell() }
+        cell.setup(city: cityModels[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.showDetails(for: cvFiles[indexPath.row])
+        delegate?.showDetails(for: cityModels[indexPath.row])
     }
 }
