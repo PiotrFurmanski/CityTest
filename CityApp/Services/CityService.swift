@@ -15,7 +15,8 @@ enum ServiceError: Error {
 
 protocol CityServiceProtocol: AnyObject {
     func getCityList(completion: @escaping (Result<[CityModel], Error>) -> Void)
-    func getCity(for url: String, completion: @escaping (Result<CityModel, Error>) -> Void)
+    func getCityTourists(for urlString: String, completion: @escaping (Result<[String], Error>) -> Void)
+    func getCityRating(for urlString: String, completion: @escaping (Result<Double, Error>) -> Void)
 }
 
 class CityService: CityServiceProtocol {
@@ -52,8 +53,8 @@ class CityService: CityServiceProtocol {
         task.resume()
     }
     
-    func getCity(for url: String, completion: @escaping (Result<CityModel, Error>) -> Void) {
-        guard let url = URL(string: url) else { return }
+    func getCityTourists(for urlString: String, completion: @escaping (Result<[String], Error>) -> Void) {
+        guard let url = URL(string: urlString) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
@@ -69,8 +70,34 @@ class CityService: CityServiceProtocol {
             
             do {
                 let decoder = JSONDecoder()
-                let cityModel = try decoder.decode(CityModel.self, from: data)
-                completion(.success(cityModel))
+                let touristsResponse = try decoder.decode(CityTouristsModel.self, from: data)
+                completion(.success(touristsResponse.tourists))
+            } catch let error {
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
+    func getCityRating(for urlString: String, completion: @escaping (Result<Double, Error>) -> Void) {
+        guard let url = URL(string: urlString) else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(ServiceError.emptyData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let ratingResponse = try decoder.decode(CityRateModel.self, from: data)
+                completion(.success(ratingResponse.rate))
             } catch let error {
                 completion(.failure(error))
             }

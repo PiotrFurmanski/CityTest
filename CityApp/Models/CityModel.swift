@@ -12,4 +12,6 @@ struct CityModel: Codable {
     let name: String
     let imageUrl: String
     let cityId: Int
+    let rateUrl: String
+    let touristsUrl: String
 }
