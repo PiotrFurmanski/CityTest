@@ -1,0 +1,10 @@
+/* 
+  Readme.strings
+  CityApp
+
+  Created by Piotr Furmanski on 27/07/2020.
+  Copyright © 2020 Piotr Furmanski. All rights reserved.
+ 
+  App firs view is city list, toggle favourites button to show only favourites cities.
+  Click on city to see detail view. On detail view you can add city to favourites.
+*/

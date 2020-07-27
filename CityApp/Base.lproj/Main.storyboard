@@ -80,9 +80,10 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CV List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGN-0y-pZ7">
-                                <rect key="frame" x="20" y="88" width="374" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show favourites only:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGN-0y-pZ7">
+                                <rect key="frame" x="20" y="88" width="200" height="48"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="d5q-gb-in2"/>
                                     <constraint firstAttribute="height" constant="48" id="ybs-4T-130"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -93,6 +94,12 @@
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                                 <color key="color" cocoaTouchSystemColor="darkTextColor"/>
                             </activityIndicatorView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hDh-Yc-Qas">
+                                <rect key="frame" x="228" y="96.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="showFavouritesPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="aRY-Wd-SJL"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -100,11 +107,12 @@
                             <constraint firstItem="iag-Du-CI3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EX6-MM-Vnr"/>
                             <constraint firstItem="iag-Du-CI3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Eyg-hb-zCT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZI1-H5-DRQ" secondAttribute="trailing" constant="20" id="GWi-Lp-laJ"/>
-                            <constraint firstItem="eGN-0y-pZ7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="GX4-Iu-tPs"/>
+                            <constraint firstItem="hDh-Yc-Qas" firstAttribute="centerY" secondItem="eGN-0y-pZ7" secondAttribute="centerY" id="LOR-hC-U0B"/>
+                            <constraint firstItem="hDh-Yc-Qas" firstAttribute="leading" secondItem="eGN-0y-pZ7" secondAttribute="trailing" constant="8" id="MTi-Xl-ul3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZI1-H5-DRQ" secondAttribute="bottom" constant="20" id="XXD-hS-jKB"/>
                             <constraint firstItem="ZI1-H5-DRQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="eT4-qe-ctd"/>
+                            <constraint firstItem="eGN-0y-pZ7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="eg7-L0-29g"/>
                             <constraint firstItem="ZI1-H5-DRQ" firstAttribute="top" secondItem="eGN-0y-pZ7" secondAttribute="bottom" constant="8" id="rKR-Zt-N0R"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eGN-0y-pZ7" secondAttribute="trailing" constant="20" id="xse-st-WGS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

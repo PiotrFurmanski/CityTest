@@ -18,6 +18,7 @@ protocol CityListViewProtocol: AnyObject {
 protocol CityListViewModelProtocol: AnyObject {
     func loadData()
     func loadFavourites()
+    var showFavouritesOnly: Bool { get set }
 }
 
 class CityListViewModel: NSObject, CityListViewModelProtocol {
@@ -25,7 +26,18 @@ class CityListViewModel: NSObject, CityListViewModelProtocol {
         static let favourites = "favourites"
     }
     
+    var showFavouritesOnly: Bool {
+        didSet {
+            delegate?.reload()
+        }
+    }
+    
     private(set) var cityModels = [CityModel]()
+    
+    private var filteredCities: [CityModel] {
+        return showFavouritesOnly ? cityModels.filter { favourites.contains($0.cityId) } : cityModels
+    }
+    
     private var favourites = [Int]()
     
     private weak var delegate: CityListViewProtocol?
@@ -34,6 +46,7 @@ class CityListViewModel: NSObject, CityListViewModelProtocol {
     init(service: CityServiceProtocol, delegate: CityListViewProtocol) {
         self.service = service
         self.delegate = delegate
+        showFavouritesOnly = false
     }
     
     func loadFavourites() {
@@ -69,7 +82,7 @@ class CityListViewModel: NSObject, CityListViewModelProtocol {
 extension CityListViewModel: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return cityModels.count
+        return filteredCities.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -77,7 +90,7 @@ extension CityListViewModel: UICollectionViewDataSource, UICollectionViewDelegat
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CityListCell.self),
                                                             for: indexPath) as? CityListCell else { return UICollectionViewCell() }
         
-        cell.setup(city: cityModels[indexPath.row], isFavorite: favourites.contains(cityModels[indexPath.row].cityId))
+        cell.setup(city: filteredCities[indexPath.row], isFavorite: favourites.contains(filteredCities[indexPath.row].cityId))
         return cell
     }
     

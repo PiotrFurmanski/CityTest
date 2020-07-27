@@ -44,6 +44,11 @@ class CityListViewController: UIViewController {
         viewModel.loadData()
     }
     
+    @IBAction func showFavouritesPressed(_ sender: UISwitch) {
+        viewModel.showFavouritesOnly = sender.isOn
+    }
+    
+    
     private func setupCollectionView() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
