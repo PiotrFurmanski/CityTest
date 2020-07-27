@@ -19,29 +19,28 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZI1-H5-DRQ">
                                 <rect key="frame" x="20" y="144" width="374" height="698"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZAz-QV-NAP">
-                                    <size key="itemSize" width="128" height="128"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZAz-QV-NAP">
+                                    <size key="itemSize" width="100" height="140"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CityListCell" id="WUs-eB-MfQ" customClass="CityListCell" customModule="CityApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="112"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8Mb-yy-zeb">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="112"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cityIcon" translatesAutoresizingMaskIntoConstraints="NO" id="6FQ-TS-d40">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cityIcon" translatesAutoresizingMaskIntoConstraints="NO" id="6FQ-TS-d40">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="108"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="Hbc-gT-pLZ"/>
                                                         <constraint firstAttribute="width" constant="100" id="cy6-12-C7u"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrl-CN-MdG">
-                                                    <rect key="frame" x="0.0" y="88" width="100" height="24"/>
+                                                    <rect key="frame" x="0.0" y="116" width="100" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="Xas-mf-7gi"/>
                                                     </constraints>
@@ -72,6 +71,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="Jrl-CN-MdG" secondAttribute="trailing" id="wSa-tf-Egd"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="100" height="140"/>
                                         <connections>
                                             <outlet property="cityImage" destination="6FQ-TS-d40" id="07L-cj-NBY"/>
                                             <outlet property="favouriteIcon" destination="4Md-HN-t0Z" id="CVG-v4-sxh"/>

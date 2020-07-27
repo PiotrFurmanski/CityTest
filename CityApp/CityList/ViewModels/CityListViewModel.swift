@@ -101,4 +101,5 @@ extension CityListViewModel: UICollectionViewDataSource, UICollectionViewDelegat
         delegate?.showDetails(for: filteredCities[indexPath.row],
                               image: cellViewModel.cachedImage[filteredCities[indexPath.row].cityId])
     }
+    
 }
