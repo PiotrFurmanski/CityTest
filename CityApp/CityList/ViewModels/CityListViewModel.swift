@@ -32,7 +32,7 @@ class CityListViewModel: NSObject, CityListViewModelProtocol {
         }
     }
     
-    private(set) var cityModels = [CityModel]()
+    private var cityModels = [CityModel]()
     
     private var filteredCities: [CityModel] {
         return showFavouritesOnly ? cityModels.filter { favourites.contains($0.cityId) } : cityModels
@@ -97,9 +97,9 @@ extension CityListViewModel: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var cityImage: UIImage?
         if let cell = collectionView.cellForItem(at: indexPath) as? CityListCell,
-            let cachedImage = cell.viewModel.cachedImage[cityModels[indexPath.row].cityId] {
+            let cachedImage = cell.viewModel.cachedImage[filteredCities[indexPath.row].cityId] {
             cityImage = cachedImage
         }
-        delegate?.showDetails(for: cityModels[indexPath.row], image: cityImage)
+        delegate?.showDetails(for: filteredCities[indexPath.row], image: cityImage)
     }
 }
