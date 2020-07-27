@@ -13,7 +13,7 @@ protocol CityListCellViewModelProtocol: AnyObject {
 }
 
 class CityListCellViewModel {
-    var cachedImage = [Int: UIImage?]()
+    private(set) var cachedImage = [Int: UIImage]()
     
     func loadImage(urlString: String, id: Int,  completion: @escaping (_ image: UIImage?, _ id: Int) -> ()) {
         if let image = cachedImage[id] {

@@ -15,18 +15,19 @@ class CityListCell: UICollectionViewCell {
     
     var cityId: Int?
     
-    let viewModel = CityListCellViewModel()
-    
     private struct Constants {
         static let placeholder = "cityIcon"
         static let transitionDuration = 0.3
     }
     
-    func setup(city: CityModel, isFavorite: Bool) {
+    func setup(city: CityModel, viewModel: CityListCellViewModel, isFavorite: Bool) {
         favouriteIcon.isHidden = !isFavorite
         titleLabel.text = city.name
         cityImage.image = viewModel.cachedImage[city.cityId] ?? UIImage(named: Constants.placeholder)
         cityId = city.cityId
+        
+        guard viewModel.cachedImage[city.cityId] == nil else { return }
+        
         viewModel.loadImage(urlString: city.imageUrl, id: city.cityId) { [weak self] (image, cityId) in
             guard let strongSelf = self, strongSelf.cityId == cityId else { return }
             if let image = image {

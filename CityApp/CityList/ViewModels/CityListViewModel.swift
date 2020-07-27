@@ -42,6 +42,7 @@ class CityListViewModel: NSObject, CityListViewModelProtocol {
     
     private weak var delegate: CityListViewProtocol?
     private let service: CityServiceProtocol
+    private let cellViewModel = CityListCellViewModel()
     
     init(service: CityServiceProtocol, delegate: CityListViewProtocol) {
         self.service = service
@@ -90,16 +91,14 @@ extension CityListViewModel: UICollectionViewDataSource, UICollectionViewDelegat
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CityListCell.self),
                                                             for: indexPath) as? CityListCell else { return UICollectionViewCell() }
         
-        cell.setup(city: filteredCities[indexPath.row], isFavorite: favourites.contains(filteredCities[indexPath.row].cityId))
+        cell.setup(city: filteredCities[indexPath.row],
+                   viewModel: cellViewModel,
+                   isFavorite: favourites.contains(filteredCities[indexPath.row].cityId))
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var cityImage: UIImage?
-        if let cell = collectionView.cellForItem(at: indexPath) as? CityListCell,
-            let cachedImage = cell.viewModel.cachedImage[filteredCities[indexPath.row].cityId] {
-            cityImage = cachedImage
-        }
-        delegate?.showDetails(for: filteredCities[indexPath.row], image: cityImage)
+        delegate?.showDetails(for: filteredCities[indexPath.row],
+                              image: cellViewModel.cachedImage[filteredCities[indexPath.row].cityId])
     }
 }
