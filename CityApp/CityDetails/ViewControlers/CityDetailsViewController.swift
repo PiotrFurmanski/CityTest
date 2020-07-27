@@ -11,14 +11,15 @@ import UIKit
 class CityDetailsViewController: UIViewController {
     private struct Constants {
         static let ok = "OK"
+        static let placeholder = "cityIcon"
     }
-    
     
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var touristsLabel: UILabel!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cityImage: UIImageView!
     var cityModel: CityModel?
+    var cityCachedImage: UIImage?
     
     private lazy var viewModel: CityDetailsViewModel = {
         return CityDetailsViewModel(service: CityService(),
@@ -31,6 +32,9 @@ class CityDetailsViewController: UIViewController {
 
         touristsLabel.text = viewModel.touritsLabelText
         ratingLabel.text = viewModel.ratingLabelText
+        cityImage.image = cityCachedImage ?? UIImage(named: Constants.placeholder)
+        
+        viewModel.getData()
     }
 
 }

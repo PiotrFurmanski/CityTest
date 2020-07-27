@@ -51,8 +51,9 @@ class CityListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == Constants.cityDetails,
             let cityDetailsVC = segue.destination as? CityDetailsViewController,
-            let cityModel = sender as? CityModel else { return }
-        cityDetailsVC.cityModel = cityModel
+            let detailsData = sender as? (CityModel, UIImage?) else { return }
+        cityDetailsVC.cityModel = detailsData.0
+        cityDetailsVC.cityCachedImage = detailsData.1
     }
 }
 
@@ -61,8 +62,8 @@ extension CityListViewController: CityListViewProtocol {
         cityCollectionView.reloadData()
     }
     
-    func showDetails(for city: CityModel) {
-        performSegue(withIdentifier: Constants.cityDetails, sender: city)
+    func showDetails(for city: CityModel, image: UIImage?) {
+        performSegue(withIdentifier: Constants.cityDetails, sender: (city, image))
     }
 
     func stopLoadingIndicator() {

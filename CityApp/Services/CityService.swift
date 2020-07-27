@@ -22,9 +22,9 @@ protocol CityServiceProtocol: AnyObject {
 class CityService: CityServiceProtocol {
     private struct Constanst {
         static let baseUrl = "https://gist.githubusercontent.com/PiotrFurmanski/"
-        static let cityListEndpoint = "115dd75791870216934e3d27e919367f/raw/b1c901bde7341cc9ef3622fd3a0d8ddeaa1d9895/cityList"
+        static let cityListEndpoint = "115dd75791870216934e3d27e919367f/raw/bf7ad481aed63753d285f5cf921e0a49bc876cb4/cityList"
     }
-    
+
     func getCityList(completion: @escaping (Result<[CityModel], Error>) -> Void) {
         guard let url = URL(string: "\(Constanst.baseUrl)\(Constanst.cityListEndpoint)") else { return }
         

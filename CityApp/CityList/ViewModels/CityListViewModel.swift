@@ -10,7 +10,7 @@ import UIKit
 
 protocol CityListViewProtocol: AnyObject {
     func reload()
-    func showDetails(for city: CityModel)
+    func showDetails(for city: CityModel, image: UIImage?)
     func stopLoadingIndicator()
     func show(error: String)
 }
@@ -67,6 +67,11 @@ extension CityListViewModel: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.showDetails(for: cityModels[indexPath.row])
+        var cityImage: UIImage?
+        if let cell = collectionView.cellForItem(at: indexPath) as? CityListCell,
+            let cachedImage = cell.viewModel.cachedImage[cityModels[indexPath.row].cityId] {
+            cityImage = cachedImage
+        }
+        delegate?.showDetails(for: cityModels[indexPath.row], image: cityImage)
     }
 }
