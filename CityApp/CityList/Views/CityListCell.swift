@@ -25,7 +25,7 @@ class CityListCell: UICollectionViewCell {
     func setup(city: CityModel, isFavorite: Bool) {
         favouriteIcon.isHidden = !isFavorite
         titleLabel.text = city.name
-        cityImage.image = UIImage(named: Constants.placeholder)
+        cityImage.image = viewModel.cachedImage[city.cityId] ?? UIImage(named: Constants.placeholder)
         cityId = city.cityId
         viewModel.loadImage(urlString: city.imageUrl, id: city.cityId) { [weak self] (image, cityId) in
             guard let strongSelf = self, strongSelf.cityId == cityId else { return }
