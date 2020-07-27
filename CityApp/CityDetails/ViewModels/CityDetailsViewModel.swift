@@ -18,17 +18,24 @@ class CityDetailsViewModel {
     private struct Constants {
         static let toursitsLabel = "Tourists amount:"
         static let ratingLabel = "Avarage rating:"
+        static let favourites = "favourites"
     }
     
     private weak var delegate: CityDetailsViewProtocol?
     private let service: CityServiceProtocol
     private let cityModel: CityModel?
+    private var favourites = [Int]()
     
     var tourists = [String]()
     private var rating: Double?
     
     var touritsLabelText: String {
         "\(Constants.toursitsLabel) \(tourists.count)"
+    }
+    
+    var isFavourite: Bool {
+        guard let cityModel = cityModel else { return false }
+        return favourites.contains(cityModel.cityId)
     }
     
     var ratingLabelText: String {
@@ -42,8 +49,25 @@ class CityDetailsViewModel {
         self.cityModel = cityModel
     }
     
+    func favouriteChange(to value: Bool) {
+        guard let cityModel = cityModel else { return }
+        if value && !favourites.contains(cityModel.cityId) {
+            favourites.append(cityModel.cityId)
+        } else if !value {
+            if let index = favourites.firstIndex(of: cityModel.cityId) {
+                favourites.remove(at: index)
+            }
+        }
+        UserDefaults.standard.set(favourites, forKey: Constants.favourites)
+    }
+    
     func getData() {
         guard let cityModel = cityModel else { return }
+        
+        if let favourites = UserDefaults.standard.object(forKey: Constants.favourites) as? [Int] {
+            self.favourites = favourites
+        }
+        
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         dispatchGroup.enter()

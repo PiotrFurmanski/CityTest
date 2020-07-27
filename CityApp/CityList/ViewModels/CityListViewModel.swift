@@ -17,10 +17,16 @@ protocol CityListViewProtocol: AnyObject {
 
 protocol CityListViewModelProtocol: AnyObject {
     func loadData()
+    func loadFavourites()
 }
 
 class CityListViewModel: NSObject, CityListViewModelProtocol {
+    private struct Constants {
+        static let favourites = "favourites"
+    }
+    
     private(set) var cityModels = [CityModel]()
+    private var favourites = [Int]()
     
     private weak var delegate: CityListViewProtocol?
     private let service: CityServiceProtocol
@@ -30,7 +36,15 @@ class CityListViewModel: NSObject, CityListViewModelProtocol {
         self.delegate = delegate
     }
     
+    func loadFavourites() {
+        if let favourites = UserDefaults.standard.object(forKey: Constants.favourites) as? [Int] {
+            self.favourites = favourites
+        }
+    }
+    
     func loadData() {
+        loadFavourites()
+        
         service.getCityList { [weak self] response in
             guard let strongSelf = self else { return }
             
@@ -62,7 +76,8 @@ extension CityListViewModel: UICollectionViewDataSource, UICollectionViewDelegat
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CityListCell.self),
                                                             for: indexPath) as? CityListCell else { return UICollectionViewCell() }
-        cell.setup(city: cityModels[indexPath.row])
+        
+        cell.setup(city: cityModels[indexPath.row], isFavorite: favourites.contains(cityModels[indexPath.row].cityId))
         return cell
     }
     

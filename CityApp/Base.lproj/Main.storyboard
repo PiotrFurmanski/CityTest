@@ -49,8 +49,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4Md-HN-t0Z">
+                                                    <rect key="frame" x="70" y="2" width="30" height="26.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="a0I-52-JOH"/>
+                                                        <constraint firstAttribute="height" constant="30" id="scv-Kd-hSZ"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="4Md-HN-t0Z" firstAttribute="top" secondItem="8Mb-yy-zeb" secondAttribute="top" id="0un-ej-Qa4"/>
                                                 <constraint firstItem="Jrl-CN-MdG" firstAttribute="top" secondItem="6FQ-TS-d40" secondAttribute="bottom" constant="8" id="4oZ-Ez-4Pe"/>
                                                 <constraint firstAttribute="bottom" secondItem="Jrl-CN-MdG" secondAttribute="bottom" id="Hhy-dc-SBb"/>
                                                 <constraint firstItem="6FQ-TS-d40" firstAttribute="top" secondItem="8Mb-yy-zeb" secondAttribute="top" id="NWa-5e-ZZB"/>
@@ -58,11 +68,13 @@
                                                 <constraint firstItem="6FQ-TS-d40" firstAttribute="leading" secondItem="8Mb-yy-zeb" secondAttribute="leading" id="WOG-4a-S6j"/>
                                                 <constraint firstItem="Jrl-CN-MdG" firstAttribute="leading" secondItem="8Mb-yy-zeb" secondAttribute="leading" id="XJ8-WE-fzY"/>
                                                 <constraint firstItem="6FQ-TS-d40" firstAttribute="centerX" secondItem="8Mb-yy-zeb" secondAttribute="centerX" id="pv2-cU-2Ga"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Md-HN-t0Z" secondAttribute="trailing" id="vQO-6d-Qj0"/>
                                                 <constraint firstAttribute="trailing" secondItem="Jrl-CN-MdG" secondAttribute="trailing" id="wSa-tf-Egd"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="cityImage" destination="6FQ-TS-d40" id="07L-cj-NBY"/>
+                                            <outlet property="favouriteIcon" destination="4Md-HN-t0Z" id="CVG-v4-sxh"/>
                                             <outlet property="titleLabel" destination="Jrl-CN-MdG" id="yaf-fW-PAf"/>
                                         </connections>
                                     </collectionViewCell>
@@ -140,12 +152,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aH6-5c-sgG">
+                                <rect key="frame" x="262" y="617.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="isFavouriteChanged:" destination="ycb-1r-Y9a" eventType="valueChanged" id="4PH-cI-Yw8"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favourite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCr-Na-nAN">
+                                <rect key="frame" x="172" y="622.5" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="FXN-YX-Lz6" firstAttribute="top" secondItem="auT-I4-OvO" secondAttribute="bottom" constant="20" id="12m-Eb-QKy"/>
+                            <constraint firstItem="aH6-5c-sgG" firstAttribute="centerY" secondItem="NCr-Na-nAN" secondAttribute="centerY" id="7hl-zS-t0g"/>
                             <constraint firstItem="2WT-0l-kaD" firstAttribute="centerX" secondItem="wcj-rR-fAE" secondAttribute="centerX" id="9rU-RC-EMM"/>
                             <constraint firstItem="3bg-fd-EY0" firstAttribute="trailing" secondItem="FXN-YX-Lz6" secondAttribute="trailing" constant="20" id="CpF-ni-AqR"/>
+                            <constraint firstItem="aH6-5c-sgG" firstAttribute="leading" secondItem="NCr-Na-nAN" secondAttribute="trailing" constant="20" id="Fod-zn-0E9"/>
                             <constraint firstItem="3bg-fd-EY0" firstAttribute="trailing" secondItem="auT-I4-OvO" secondAttribute="trailing" constant="20" id="FtE-NS-u46"/>
                             <constraint firstItem="cxY-7d-nIE" firstAttribute="leading" secondItem="3bg-fd-EY0" secondAttribute="leading" constant="20" id="H6K-mN-8pr"/>
                             <constraint firstItem="cxY-7d-nIE" firstAttribute="top" secondItem="FXN-YX-Lz6" secondAttribute="bottom" constant="8" id="MpQ-45-dmS"/>
@@ -153,14 +179,17 @@
                             <constraint firstItem="auT-I4-OvO" firstAttribute="leading" secondItem="3bg-fd-EY0" secondAttribute="leading" constant="20" id="gJX-Dc-WA1"/>
                             <constraint firstItem="2WT-0l-kaD" firstAttribute="centerY" secondItem="wcj-rR-fAE" secondAttribute="centerY" id="nVq-bo-0ch"/>
                             <constraint firstItem="FXN-YX-Lz6" firstAttribute="leading" secondItem="3bg-fd-EY0" secondAttribute="leading" constant="20" id="qie-6H-MFj"/>
+                            <constraint firstItem="NCr-Na-nAN" firstAttribute="top" secondItem="cxY-7d-nIE" secondAttribute="bottom" constant="8" id="sWV-yM-aRF"/>
                             <constraint firstItem="auT-I4-OvO" firstAttribute="top" secondItem="3bg-fd-EY0" secondAttribute="top" constant="20" id="wCj-mo-8rA"/>
                             <constraint firstItem="3bg-fd-EY0" firstAttribute="trailing" secondItem="cxY-7d-nIE" secondAttribute="trailing" constant="20" id="xmd-3g-W2X"/>
+                            <constraint firstItem="NCr-Na-nAN" firstAttribute="centerX" secondItem="wcj-rR-fAE" secondAttribute="centerX" id="z8m-7q-sBV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3bg-fd-EY0"/>
                     </view>
                     <navigationItem key="navigationItem" id="ToA-sl-ay5"/>
                     <connections>
                         <outlet property="cityImage" destination="auT-I4-OvO" id="rzU-M9-P26"/>
+                        <outlet property="isFavourite" destination="aH6-5c-sgG" id="zbq-4g-8Uo"/>
                         <outlet property="loadingIndicator" destination="2WT-0l-kaD" id="mIE-GJ-V1D"/>
                         <outlet property="ratingLabel" destination="cxY-7d-nIE" id="8of-1X-DKG"/>
                         <outlet property="touristsLabel" destination="FXN-YX-Lz6" id="A3A-VX-taT"/>
@@ -258,6 +287,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="cityIcon" width="48" height="48"/>
         <image name="clear" catalog="system" width="128" height="114"/>
     </resources>

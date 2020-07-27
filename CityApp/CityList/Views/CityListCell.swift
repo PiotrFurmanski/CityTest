@@ -11,6 +11,7 @@ import UIKit
 class CityListCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cityImage: UIImageView!
+    @IBOutlet weak var favouriteIcon: UIImageView!
     
     var cityId: Int?
     
@@ -21,7 +22,8 @@ class CityListCell: UICollectionViewCell {
         static let transitionDuration = 0.3
     }
     
-    func setup(city: CityModel) {
+    func setup(city: CityModel, isFavorite: Bool) {
+        favouriteIcon.isHidden = !isFavorite
         titleLabel.text = city.name
         cityImage.image = UIImage(named: Constants.placeholder)
         cityId = city.cityId

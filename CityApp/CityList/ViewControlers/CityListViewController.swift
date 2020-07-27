@@ -32,6 +32,12 @@ class CityListViewController: UIViewController {
         setupCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadFavourites()
+        reload()
+    }
+    
     private func setupData() {
         cityCollectionView.dataSource = viewModel
         cityCollectionView.delegate = viewModel

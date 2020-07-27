@@ -13,8 +13,10 @@ class CityDetailsViewController: UIViewController {
         static let ok = "OK"
         static let placeholder = "cityIcon"
         static let touristsList = "touristsList"
+        static let favourites = "favourites"
     }
     
+    @IBOutlet weak var isFavourite: UISwitch!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var touristsLabel: UILabel!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -34,11 +36,17 @@ class CityDetailsViewController: UIViewController {
         touristsLabel.text = viewModel.touritsLabelText
         ratingLabel.text = viewModel.ratingLabelText
         cityImage.image = cityCachedImage ?? UIImage(named: Constants.placeholder)
+        isFavourite.isOn = viewModel.isFavourite
         
         setupTouristsLabelAction()
         
         viewModel.getData()
     }
+    
+    @IBAction func isFavouriteChanged(_ sender: UISwitch) {
+        viewModel.favouriteChange(to: sender.isOn)
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == Constants.touristsList,
@@ -63,6 +71,7 @@ extension CityDetailsViewController: CityDetailsViewProtocol {
     func reload() {
         touristsLabel.text = viewModel.touritsLabelText
         ratingLabel.text = viewModel.ratingLabelText
+        isFavourite.isOn = viewModel.isFavourite
     }
     
     func stopLoadingIndicator() {
