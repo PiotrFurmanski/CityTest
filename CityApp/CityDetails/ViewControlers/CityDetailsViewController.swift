@@ -12,6 +12,7 @@ class CityDetailsViewController: UIViewController {
     private struct Constants {
         static let ok = "OK"
         static let placeholder = "cityIcon"
+        static let touristsList = "touristsList"
     }
     
     @IBOutlet weak var ratingLabel: UILabel!
@@ -34,7 +35,26 @@ class CityDetailsViewController: UIViewController {
         ratingLabel.text = viewModel.ratingLabelText
         cityImage.image = cityCachedImage ?? UIImage(named: Constants.placeholder)
         
+        setupTouristsLabelAction()
+        
         viewModel.getData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == Constants.touristsList,
+            let touristListVC = segue.destination as? TouristsListViewController,
+            let touristsList = sender as? [String] else { return }
+        touristListVC.tourists = touristsList
+    }
+    
+    private func setupTouristsLabelAction() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showTourists))
+        touristsLabel.isUserInteractionEnabled = true
+        touristsLabel.addGestureRecognizer(tap)
+    }
+    
+    @objc func showTourists(sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: Constants.touristsList, sender: viewModel.tourists)
     }
 
 }
