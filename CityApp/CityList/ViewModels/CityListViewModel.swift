@@ -16,7 +16,7 @@ protocol CityListViewProtocol: AnyObject {
 }
 
 protocol CityListViewModelProtocol: AnyObject {
-    func loadData()
+    func loadData(completion: (() -> ())?)
     func loadFavourites()
     var showFavouritesOnly: Bool { get set }
 }
@@ -32,7 +32,7 @@ class CityListViewModel: NSObject, CityListViewModelProtocol {
         }
     }
     
-    private var cityModels = [CityModel]()
+    private(set) var cityModels = [CityModel]()
     
     private var filteredCities: [CityModel] {
         return showFavouritesOnly ? cityModels.filter { favourites.contains($0.cityId) } : cityModels
@@ -56,7 +56,7 @@ class CityListViewModel: NSObject, CityListViewModelProtocol {
         }
     }
     
-    func loadData() {
+    func loadData(completion: (() -> ())? = nil) {
         loadFavourites()
         
         service.getCityList { [weak self] response in
@@ -68,11 +68,13 @@ class CityListViewModel: NSObject, CityListViewModelProtocol {
                 DispatchQueue.main.async {
                     strongSelf.delegate?.stopLoadingIndicator()
                     strongSelf.delegate?.reload()
+                    completion?()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     strongSelf.delegate?.stopLoadingIndicator()
                     strongSelf.delegate?.show(error: error.localizedDescription)
+                    completion?()
                 }
             }
         }

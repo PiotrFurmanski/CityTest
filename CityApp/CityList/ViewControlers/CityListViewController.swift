@@ -41,7 +41,7 @@ class CityListViewController: UIViewController {
     private func setupData() {
         cityCollectionView.dataSource = viewModel
         cityCollectionView.delegate = viewModel
-        viewModel.loadData()
+        viewModel.loadData(completion: nil)
     }
     
     @IBAction func showFavouritesPressed(_ sender: UISwitch) {
@@ -56,7 +56,7 @@ class CityListViewController: UIViewController {
     }
     
     @objc func refresh() {
-        viewModel.loadData()
+        viewModel.loadData(completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
