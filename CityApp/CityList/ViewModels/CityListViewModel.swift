@@ -34,7 +34,7 @@ class CityListViewModel: NSObject, CityListViewModelProtocol {
     
     private(set) var cityModels = [CityModel]()
     
-    private var filteredCities: [CityModel] {
+    var filteredCities: [CityModel] {
         return showFavouritesOnly ? cityModels.filter { favourites.contains($0.cityId) } : cityModels
     }
     

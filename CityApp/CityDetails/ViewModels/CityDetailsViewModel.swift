@@ -61,7 +61,7 @@ class CityDetailsViewModel {
         UserDefaults.standard.set(favourites, forKey: Constants.favourites)
     }
     
-    func getData() {
+    func getData(completion: (() -> ())? = nil) {
         guard let cityModel = cityModel else { return }
         
         if let favourites = UserDefaults.standard.object(forKey: Constants.favourites) as? [Int] {
@@ -106,6 +106,7 @@ class CityDetailsViewModel {
             guard let strongSelf = self else { return }
             strongSelf.delegate?.stopLoadingIndicator()
             strongSelf.delegate?.reload()
+            completion?()
         }
     }
 }

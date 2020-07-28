@@ -31,7 +31,7 @@ class CityServiceMock: CityServiceProtocol {
     }
     
     func getCityRating(for urlString: String, completion: @escaping (Result<Double, Error>) -> Void) {
-        completion(.success(5))
+        isFaultOccurs ? completion(.failure(CustomError.someError)) : completion(.success(5))
     }
     
     
