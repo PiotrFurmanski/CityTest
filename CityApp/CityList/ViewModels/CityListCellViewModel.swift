@@ -13,16 +13,7 @@ protocol CityListCellViewModelProtocol: AnyObject {
 }
 
 class CityListCellViewModel {
-    private struct Constants {
-        static let maxCapacity = 20
-    }
-    private(set) var cachedImage = [Int: UIImage]() {
-        didSet {
-            if cachedImage.count > Constants.maxCapacity {
-                cachedImage.removeAll()
-            }
-        }
-    }
+    private(set) var cachedImage = [Int: UIImage]()
     
     func loadImage(urlString: String, id: Int,
                    completion: @escaping (_ image: UIImage?, _ id: Int) -> ()) {
