@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct CityTouristsModel: Codable {
+public struct CityTouristsModel: Codable {
     let tourists: [String]
+    
+    public init(tourists: [String]) {
+        self.tourists = tourists
+    }
 }
 

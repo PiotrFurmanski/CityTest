@@ -2,11 +2,12 @@
 //  CityDetailsViewController.swift
 //  CVApp
 //
-//  Created by Piotr Furmanski on 23/07/2020.
-//  Copyright © 2020 Piotr Furmanski. All rights reserved.
+//  Created by Piotr Furmanski on 16/01/2021.
+//  Copyright © 2021 Piotr Furmanski. All rights reserved.
 //
 
 import UIKit
+import Services
 
 class CityDetailsViewController: UIViewController {
     private struct Constants {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Services
 
 class CityListCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!

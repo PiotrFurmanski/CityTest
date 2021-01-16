@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Services
 @testable import CityApp
 
 class CityListViewMock: CityListViewProtocol {

@@ -8,6 +8,10 @@
 
 import Foundation
 
-struct CityListResponse: Codable {
+public struct CityListResponse: Codable {
     let cityList: [CityModel]
+    
+    public init(cityList: [CityModel]) {
+        self.cityList = cityList
+    }
 }

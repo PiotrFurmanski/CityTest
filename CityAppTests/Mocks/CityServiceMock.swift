@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Services
 @testable import CityApp
 
 class CityServiceMock: CityServiceProtocol {

@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct CityRateModel: Codable {
+public struct CityRateModel: Codable {
     let rate: Double
+    
+    public init(rate: Double) {
+        self.rate = rate
+    }
 }
 

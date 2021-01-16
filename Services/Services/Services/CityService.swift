@@ -2,30 +2,32 @@
 //  CVService.swift
 //  CVApp
 //
-//  Created by Piotr Furmanski on 23/07/2020.
-//  Copyright © 2020 Piotr Furmanski. All rights reserved.
+//  Created by Piotr Furmanski on 16/01/2021.
+//  Copyright © 2021 Piotr Furmanski. All rights reserved.
 //
 
 import Foundation
 
-enum ServiceError: Error {
+public enum ServiceError: Error {
     case emptyData
 }
 
 
-protocol CityServiceProtocol: AnyObject {
+public protocol CityServiceProtocol: AnyObject {
     func getCityList(completion: @escaping (Result<[CityModel], Error>) -> Void)
     func getCityTourists(for urlString: String, completion: @escaping (Result<[String], Error>) -> Void)
     func getCityRating(for urlString: String, completion: @escaping (Result<Double, Error>) -> Void)
 }
 
-class CityService: CityServiceProtocol {
+public class CityService: CityServiceProtocol {
     private struct Constanst {
         static let baseUrl = "https://gist.githubusercontent.com/PiotrFurmanski/"
         static let cityListEndpoint = "115dd75791870216934e3d27e919367f/raw/d8bddbe0a5eda0ff81893973e239f411978c73d4/cityList"
     }
+    
+    public init(){}
 
-    func getCityList(completion: @escaping (Result<[CityModel], Error>) -> Void) {
+    public func getCityList(completion: @escaping (Result<[CityModel], Error>) -> Void) {
         guard let url = URL(string: "\(Constanst.baseUrl)\(Constanst.cityListEndpoint)") else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -53,7 +55,7 @@ class CityService: CityServiceProtocol {
         task.resume()
     }
     
-    func getCityTourists(for urlString: String, completion: @escaping (Result<[String], Error>) -> Void) {
+    public func getCityTourists(for urlString: String, completion: @escaping (Result<[String], Error>) -> Void) {
         guard let url = URL(string: urlString) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -79,7 +81,7 @@ class CityService: CityServiceProtocol {
         task.resume()
     }
     
-    func getCityRating(for urlString: String, completion: @escaping (Result<Double, Error>) -> Void) {
+    public func getCityRating(for urlString: String, completion: @escaping (Result<Double, Error>) -> Void) {
         guard let url = URL(string: urlString) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in

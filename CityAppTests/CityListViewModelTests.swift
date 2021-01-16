@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Services
 @testable import CityApp
 
 class CityListViewModelTests: XCTestCase {

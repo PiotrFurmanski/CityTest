@@ -2,8 +2,8 @@
 //  CityListCellViewModel.swift
 //  CityApp
 //
-//  Created by Piotr Furmanski on 24/07/2020.
-//  Copyright © 2020 Piotr Furmanski. All rights reserved.
+//  Created by Piotr Furmanski on 16/01/2021.
+//  Copyright © 2021 Piotr Furmanski. All rights reserved.
 //
 
 import UIKit
