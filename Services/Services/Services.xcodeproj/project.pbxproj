@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6F52044125B3704B0081B6FE /* Services.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F52043725B3704B0081B6FE /* Services.framework */; };
-		6F52044625B3704B0081B6FE /* ServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F52044525B3704B0081B6FE /* ServicesTests.swift */; };
 		6F52044825B3704B0081B6FE /* Services.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F52043A25B3704B0081B6FE /* Services.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F52045425B3706C0081B6FE /* CityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F52045325B3706C0081B6FE /* CityService.swift */; };
 		6F52047825B374410081B6FE /* CityListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F52047425B374410081B6FE /* CityListResponse.swift */; };
@@ -32,8 +31,6 @@
 		6F52043A25B3704B0081B6FE /* Services.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Services.h; sourceTree = "<group>"; };
 		6F52043B25B3704B0081B6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F52044025B3704B0081B6FE /* ServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ServicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F52044525B3704B0081B6FE /* ServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTests.swift; sourceTree = "<group>"; };
-		6F52044725B3704B0081B6FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F52045325B3706C0081B6FE /* CityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityService.swift; sourceTree = "<group>"; };
 		6F52047425B374410081B6FE /* CityListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListResponse.swift; sourceTree = "<group>"; };
 		6F52047525B374410081B6FE /* CityRateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityRateModel.swift; sourceTree = "<group>"; };
@@ -64,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				6F52043925B3704B0081B6FE /* Services */,
-				6F52044425B3704B0081B6FE /* ServicesTests */,
 				6F52043825B3704B0081B6FE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,15 +83,6 @@
 				6F52043B25B3704B0081B6FE /* Info.plist */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		6F52044425B3704B0081B6FE /* ServicesTests */ = {
-			isa = PBXGroup;
-			children = (
-				6F52044525B3704B0081B6FE /* ServicesTests.swift */,
-				6F52044725B3704B0081B6FE /* Info.plist */,
-			);
-			path = ServicesTests;
 			sourceTree = "<group>";
 		};
 		6F52047325B373EA0081B6FE /* Models */ = {
@@ -229,7 +216,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F52044625B3704B0081B6FE /* ServicesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
