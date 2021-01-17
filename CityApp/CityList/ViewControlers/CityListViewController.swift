@@ -15,7 +15,6 @@ class CityListViewController: UIViewController {
                                          UICollectionViewDelegate
     
     private struct Constants {
-        static let cityDetails = "cityDetails"
         static let ok = "OK"
         
         struct Layout {
@@ -122,7 +121,6 @@ class CityListViewController: UIViewController {
         viewModel.showFavouritesOnly = sender.isOn
     }
     
-    
     private func setupCollectionView() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -133,14 +131,6 @@ class CityListViewController: UIViewController {
     @objc func refresh() {
         viewModel.loadData(completion: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == Constants.cityDetails,
-            let cityDetailsVC = segue.destination as? CityDetailsViewController,
-            let detailsData = sender as? (CityModel, UIImage?) else { return }
-        cityDetailsVC.cityModel = detailsData.0
-        cityDetailsVC.cityCachedImage = detailsData.1
-    }
 }
 
 extension CityListViewController: CityListViewProtocol {
@@ -149,7 +139,10 @@ extension CityListViewController: CityListViewProtocol {
     }
     
     func showDetails(for city: CityModel, image: UIImage?) {
-        performSegue(withIdentifier: Constants.cityDetails, sender: (city, image))
+        let cityDetailsVC = CityDetailsViewController()
+        cityDetailsVC.cityModel = city
+        cityDetailsVC.cityCachedImage = image
+        present(cityDetailsVC, animated: true, completion: nil)
     }
 
     func stopLoadingIndicator() {
