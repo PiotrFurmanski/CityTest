@@ -25,8 +25,6 @@ class CityListViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    
     private lazy var favouritesLabel: UILabel = {
         let titleLabel = UILabel(frame: .zero)
         titleLabel.lineBreakMode = .byTruncatingTail
@@ -56,6 +54,14 @@ class CityListViewController: UIViewController {
         return favouritesSwitch
     }()
     
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let loadingIndicator = UIActivityIndicatorView()
+        loadingIndicator.startAnimating()
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return loadingIndicator
+    }()
+    
     private lazy var viewModel: CityListDataSource = {
         return CityListViewModel(service: CityService(), delegate: self)
     }()
@@ -65,6 +71,8 @@ class CityListViewController: UIViewController {
         view.addSubview(cityCollectionView)
         view.addSubview(favouritesLabel)
         view.addSubview(favouritesSwitch)
+        view.addSubview(loadingIndicator)
+        view.bringSubviewToFront(loadingIndicator)
 
         NSLayoutConstraint.activate([
             favouritesLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
@@ -82,7 +90,10 @@ class CityListViewController: UIViewController {
             
             favouritesSwitch.leadingAnchor.constraint(equalTo: favouritesLabel.trailingAnchor,
                                                       constant: Constants.Layout.margin/2),
-            favouritesSwitch.centerYAnchor.constraint(equalTo: favouritesLabel.centerYAnchor)
+            favouritesSwitch.centerYAnchor.constraint(equalTo: favouritesLabel.centerYAnchor),
+            
+            loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     
@@ -142,7 +153,7 @@ extension CityListViewController: CityListViewProtocol {
     }
 
     func stopLoadingIndicator() {
-//        loadingIndicator.stopAnimating()
+        loadingIndicator.stopAnimating()
         cityCollectionView.refreshControl?.endRefreshing()
     }
     
