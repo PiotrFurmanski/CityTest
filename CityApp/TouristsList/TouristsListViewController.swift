@@ -11,14 +11,61 @@ import UIKit
 class TouristsListViewController: UIViewController {
     private struct Constants {
         static let cellIdentifier = "touristCell"
+        static let buttonImage = "clear"
+        
+        struct Layout {
+            static let margin: CGFloat = 20
+            static let buttonSize: CGFloat = 30
+        }
     }
     var tourists = [String]()
-
-    @IBOutlet weak var tableView: UITableView!
     
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(UITableViewCell.self,
+                           forCellReuseIdentifier: String(describing: Constants.cellIdentifier))
+        return tableView
+    }()
     
-    @IBAction func closePressed(_ sender: Any) {
+    private lazy var closeButton: UIButton = {
+        let closeButton = UIButton()
+        closeButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
+        closeButton.setImage(UIImage(systemName: Constants.buttonImage), for: .normal)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        return closeButton
+    }()
+    
+    @objc func closePressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func loadView() {
+        super.loadView()
+        view.addSubview(tableView)
+        view.addSubview(closeButton)
+        view.bringSubviewToFront(closeButton)
+
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                           constant: Constants.Layout.margin),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                                              constant: Constants.Layout.margin),
+            
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                           constant: Constants.Layout.margin),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+                                                constant: -Constants.Layout.margin),
+            closeButton.widthAnchor.constraint(equalToConstant: Constants.Layout.buttonSize),
+            closeButton.heightAnchor.constraint(equalToConstant: Constants.Layout.buttonSize)
+        ])
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
     }
     
 }
