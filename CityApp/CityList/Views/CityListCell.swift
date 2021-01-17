@@ -10,9 +10,9 @@ import UIKit
 import Services
 
 class CityListCell: UICollectionViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var cityImage: UIImageView!
-    @IBOutlet weak var favouriteIcon: UIImageView!
+    weak var titleLabel: UILabel!
+    weak var cityImage: UIImageView!
+    weak var favouriteIcon: UIImageView!
     
     var cityId: Int?
     
@@ -21,8 +21,52 @@ class CityListCell: UICollectionViewCell {
         static let transitionDuration = 0.3
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupViews()
+    }
+    
+    private func setupViews() {
+        let label = UILabel(frame: .zero)
+        titleLabel = label
+        titleLabel.lineBreakMode = .byTruncatingTail
+        titleLabel.numberOfLines = 0
+        titleLabel.textColor = .black
+        titleLabel.textAlignment = .center
+        
+        let imageView = UIImageView(frame: .zero)
+        cityImage = imageView
+        cityImage.contentMode = .scaleAspectFill
+        cityImage.backgroundColor = .clear
+        cityImage.clipsToBounds = true
+        
+        cityImage.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.addSubview(cityImage)
+        contentView.addSubview(titleLabel)
+        contentView.backgroundColor = .white
+        
+        NSLayoutConstraint.activate([
+            cityImage.topAnchor.constraint(equalTo: topAnchor),
+            cityImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            cityImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            titleLabel.topAnchor.constraint(equalTo: cityImage.bottomAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 28)
+        ])
+    }
+    
     func setup(city: CityModel, viewModel: CityListCellViewModel, isFavorite: Bool) {
-        favouriteIcon.isHidden = !isFavorite
+//        favouriteIcon.isHidden = !isFavorite
         titleLabel.text = city.name
         cityImage.image = viewModel.cachedImage[city.cityId] ?? UIImage(named: Constants.placeholder)
         cityId = city.cityId
@@ -35,8 +79,8 @@ class CityListCell: UICollectionViewCell {
                 UIView.transition(with: strongSelf.cityImage,
                                   duration: Constants.transitionDuration,
                                   options: .transitionCrossDissolve, animations: {
-                    strongSelf.cityImage.image = image
-                })
+                                    strongSelf.cityImage.image = image
+                                  })
             }
         }
     }

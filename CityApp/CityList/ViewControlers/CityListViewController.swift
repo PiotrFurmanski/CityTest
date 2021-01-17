@@ -21,14 +21,35 @@ class CityListViewController: UIViewController {
     
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var cityCollectionView: UICollectionView!
+    weak var cityCollectionView: UICollectionView!
     
     private lazy var viewModel: CityListDataSource = {
         return CityListViewModel(service: CityService(), delegate: self)
     }()
     
+    override func loadView() {
+        super.loadView()
+        let cityCollectionView = UICollectionView(frame: CGRect.zero,
+                                                   collectionViewLayout: UICollectionViewFlowLayout.init())
+        let layout = UICollectionViewFlowLayout.init()
+        cityCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 10
+        cityCollectionView.setCollectionViewLayout(layout, animated: true)
+        self.view.addSubview(cityCollectionView)
+        
+        NSLayoutConstraint.activate([
+            cityCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            cityCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            cityCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            cityCollectionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+        ])
+        self.cityCollectionView = cityCollectionView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setupData()
         setupCollectionView()
     }
@@ -40,6 +61,8 @@ class CityListViewController: UIViewController {
     }
     
     private func setupData() {
+        cityCollectionView.register(CityListCell.self,
+                                    forCellWithReuseIdentifier: String(describing: CityListCell.self))
         cityCollectionView.dataSource = viewModel
         cityCollectionView.delegate = viewModel
         viewModel.loadData(completion: nil)
@@ -54,6 +77,7 @@ class CityListViewController: UIViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         cityCollectionView.refreshControl = refreshControl
+        cityCollectionView.backgroundColor = .white
     }
     
     @objc func refresh() {
@@ -79,7 +103,7 @@ extension CityListViewController: CityListViewProtocol {
     }
 
     func stopLoadingIndicator() {
-        loadingIndicator.stopAnimating()
+//        loadingIndicator.stopAnimating()
         cityCollectionView.refreshControl?.endRefreshing()
     }
     

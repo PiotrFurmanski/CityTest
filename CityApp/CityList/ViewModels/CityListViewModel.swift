@@ -25,6 +25,8 @@ protocol CityListViewModelProtocol: AnyObject {
 class CityListViewModel: NSObject, CityListViewModelProtocol {
     private struct Constants {
         static let favourites = "favourites"
+        static let cellWidht: CGFloat = 100
+        static let cellHeight: CGFloat = 140
     }
     
     var showFavouritesOnly: Bool {
@@ -86,7 +88,7 @@ class CityListViewModel: NSObject, CityListViewModelProtocol {
 extension CityListViewModel: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return filteredCities.count
+        filteredCities.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -105,4 +107,14 @@ extension CityListViewModel: UICollectionViewDataSource, UICollectionViewDelegat
                               image: cellViewModel.cachedImage[filteredCities[indexPath.row].cityId])
     }
     
+}
+
+extension CityListViewModel: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: Constants.cellWidht, height: Constants.cellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    }
 }

@@ -2,9 +2,10 @@
   Readme.strings
   CityApp
 
-  Created by Piotr Furmanski on 27/07/2020.
-  Copyright © 2020 Piotr Furmanski. All rights reserved.
+  Created by Piotr Furmanski on 17/011/2021.
+  Copyright © 2021 Piotr Furmanski. All rights reserved.
  
+  Open using CityApp.xcworkspace.
   App firs view is city list. Green checkmark on ciry images shows it's added to favourites.
   Toggle favourites button to show only favourites cities.
   Click on city to see detail view. On detail view you can add city to favourites.
