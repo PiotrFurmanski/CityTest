@@ -142,7 +142,7 @@ extension CityListViewController: CityListViewProtocol {
         let cityDetailsVC = CityDetailsViewController()
         cityDetailsVC.cityModel = city
         cityDetailsVC.cityCachedImage = image
-        present(cityDetailsVC, animated: true, completion: nil)
+        navigationController?.pushViewController(cityDetailsVC, animated: true)
     }
 
     func stopLoadingIndicator() {

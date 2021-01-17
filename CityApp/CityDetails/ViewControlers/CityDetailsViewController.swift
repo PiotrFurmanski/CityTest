@@ -101,7 +101,7 @@ class CityDetailsViewController: UIViewController {
             cityImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
                                                      constant: Constants.Layout.margin),
             cityImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
-                                                    constant: Constants.Layout.margin),
+                                                    constant: -Constants.Layout.margin),
             cityImageView.heightAnchor.constraint(equalTo: view.heightAnchor,
                                                   multiplier: 0.4),
             
@@ -132,7 +132,7 @@ class CityDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .white
         touristsLabel.text = viewModel.touritsLabelText
         ratingLabel.text = viewModel.ratingLabelText
         cityImageView.image = cityCachedImage ?? UIImage(named: Constants.placeholder)
