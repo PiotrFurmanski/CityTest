@@ -49,6 +49,13 @@ class CityListViewController: UIViewController {
         return cityCollectionView
     }()
     
+    private lazy var favouritesSwitch: UISwitch = {
+        let favouritesSwitch = UISwitch()
+        favouritesSwitch.addTarget(self, action: #selector(showFavouritesPressed), for: .valueChanged)
+        favouritesSwitch.translatesAutoresizingMaskIntoConstraints = false
+        return favouritesSwitch
+    }()
+    
     private lazy var viewModel: CityListDataSource = {
         return CityListViewModel(service: CityService(), delegate: self)
     }()
@@ -57,18 +64,25 @@ class CityListViewController: UIViewController {
         super.loadView()
         view.addSubview(cityCollectionView)
         view.addSubview(favouritesLabel)
-        
+        view.addSubview(favouritesSwitch)
+
         NSLayoutConstraint.activate([
             favouritesLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                                  constant: Constants.Layout.margin),
-            favouritesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.Layout.margin/2),
+            favouritesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+                                                     constant: Constants.Layout.margin/2),
             favouritesLabel.widthAnchor.constraint(equalToConstant: Constants.Layout.labelWidht),
             favouritesLabel.heightAnchor.constraint(equalToConstant: Constants.Layout.labelHeight),
             
             cityCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             cityCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             cityCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            cityCollectionView.topAnchor.constraint(equalTo: favouritesLabel.bottomAnchor, constant: Constants.Layout.margin)
+            cityCollectionView.topAnchor.constraint(equalTo: favouritesLabel.bottomAnchor,
+                                                    constant: Constants.Layout.margin),
+            
+            favouritesSwitch.leadingAnchor.constraint(equalTo: favouritesLabel.trailingAnchor,
+                                                      constant: Constants.Layout.margin/2),
+            favouritesSwitch.centerYAnchor.constraint(equalTo: favouritesLabel.centerYAnchor)
         ])
     }
     
@@ -93,7 +107,7 @@ class CityListViewController: UIViewController {
         viewModel.loadData(completion: nil)
     }
     
-    @IBAction func showFavouritesPressed(_ sender: UISwitch) {
+    @objc func showFavouritesPressed(_ sender: UISwitch) {
         viewModel.showFavouritesOnly = sender.isOn
     }
     
