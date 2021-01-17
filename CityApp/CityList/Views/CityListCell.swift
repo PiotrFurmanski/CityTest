@@ -10,16 +10,46 @@ import UIKit
 import Services
 
 class CityListCell: UICollectionViewCell {
-    weak var titleLabel: UILabel!
-    weak var cityImage: UIImageView!
-    weak var favouriteIcon: UIImageView!
-    
     var cityId: Int?
     
     private struct Constants {
         static let placeholder = "cityIcon"
+        static let checkmark = "checkmark"
         static let transitionDuration = 0.3
+        static let labelHeight: CGFloat = 28
+        static let labelTop: CGFloat = 8
+        static let checkmarkSize: CGFloat = 30
     }
+    
+    private lazy var titleLabel: UILabel = {
+        let titleLabel = UILabel(frame: .zero)
+        titleLabel.lineBreakMode = .byTruncatingTail
+        titleLabel.numberOfLines = 0
+        titleLabel.textColor = .black
+        titleLabel.textAlignment = .center
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        return titleLabel
+    }()
+    
+    private lazy var cityImageView: UIImageView = {
+        let cityImage = UIImageView(frame: .zero)
+        cityImage.contentMode = .scaleAspectFill
+        cityImage.backgroundColor = .clear
+        cityImage.clipsToBounds = true
+        cityImage.translatesAutoresizingMaskIntoConstraints = false
+        return cityImage
+    }()
+    
+    private lazy var favouriteIcon: UIImageView = {
+        let favouriteIcon = UIImageView(frame: .zero)
+        favouriteIcon.contentMode = .scaleAspectFill
+        favouriteIcon.backgroundColor = .clear
+        favouriteIcon.tintColor = .green
+        favouriteIcon.clipsToBounds = true
+        favouriteIcon.translatesAutoresizingMaskIntoConstraints = false
+        favouriteIcon.image = UIImage(systemName: Constants.checkmark)
+        return favouriteIcon
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,43 +62,35 @@ class CityListCell: UICollectionViewCell {
     }
     
     private func setupViews() {
-        let label = UILabel(frame: .zero)
-        titleLabel = label
-        titleLabel.lineBreakMode = .byTruncatingTail
-        titleLabel.numberOfLines = 0
-        titleLabel.textColor = .black
-        titleLabel.textAlignment = .center
-        
-        let imageView = UIImageView(frame: .zero)
-        cityImage = imageView
-        cityImage.contentMode = .scaleAspectFill
-        cityImage.backgroundColor = .clear
-        cityImage.clipsToBounds = true
-        
-        cityImage.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        contentView.addSubview(cityImage)
+        contentView.addSubview(cityImageView)
         contentView.addSubview(titleLabel)
+        contentView.addSubview(favouriteIcon)
+        contentView.bringSubviewToFront(favouriteIcon)
         contentView.backgroundColor = .white
         
         NSLayoutConstraint.activate([
-            cityImage.topAnchor.constraint(equalTo: topAnchor),
-            cityImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            cityImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+            cityImageView.topAnchor.constraint(equalTo: topAnchor),
+            cityImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            cityImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            titleLabel.topAnchor.constraint(equalTo: cityImage.bottomAnchor, constant: 8),
+            titleLabel.topAnchor.constraint(equalTo: cityImageView.bottomAnchor,
+                                            constant: Constants.labelTop),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 28)
+            titleLabel.heightAnchor.constraint(equalToConstant: Constants.labelHeight),
+            
+            favouriteIcon.topAnchor.constraint(equalTo: topAnchor),
+            favouriteIcon.trailingAnchor.constraint(equalTo: trailingAnchor),
+            favouriteIcon.widthAnchor.constraint(equalToConstant: Constants.checkmarkSize),
+            favouriteIcon.heightAnchor.constraint(equalToConstant: Constants.checkmarkSize)
         ])
     }
     
     func setup(city: CityModel, viewModel: CityListCellViewModel, isFavorite: Bool) {
-//        favouriteIcon.isHidden = !isFavorite
+        favouriteIcon.isHidden = !isFavorite
         titleLabel.text = city.name
-        cityImage.image = viewModel.cachedImage[city.cityId] ?? UIImage(named: Constants.placeholder)
+        cityImageView.image = viewModel.cachedImage[city.cityId] ?? UIImage(named: Constants.placeholder)
         cityId = city.cityId
         
         guard viewModel.cachedImage[city.cityId] == nil else { return }
@@ -76,10 +98,10 @@ class CityListCell: UICollectionViewCell {
         viewModel.loadImage(urlString: city.imageUrl, id: city.cityId) { [weak self] (image, cityId) in
             guard let strongSelf = self, strongSelf.cityId == cityId else { return }
             if let image = image {
-                UIView.transition(with: strongSelf.cityImage,
+                UIView.transition(with: strongSelf.cityImageView,
                                   duration: Constants.transitionDuration,
                                   options: .transitionCrossDissolve, animations: {
-                                    strongSelf.cityImage.image = image
+                                    strongSelf.cityImageView.image = image
                                   })
             }
         }

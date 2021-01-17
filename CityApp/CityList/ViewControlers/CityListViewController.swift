@@ -17,11 +17,37 @@ class CityListViewController: UIViewController {
     private struct Constants {
         static let cityDetails = "cityDetails"
         static let ok = "OK"
+        
+        struct Layout {
+            static let labelWidht: CGFloat = 200
+            static let labelHeight: CGFloat = 48
+            static let margin: CGFloat = 20
+        }
     }
     
-    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    weak var cityCollectionView: UICollectionView!
+    
+    private lazy var favouritesLabel: UILabel = {
+        let titleLabel = UILabel(frame: .zero)
+        titleLabel.lineBreakMode = .byTruncatingTail
+        titleLabel.numberOfLines = 0
+        titleLabel.textColor = .black
+        titleLabel.textAlignment = .center
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.text = "Show favourites only:"
+        return titleLabel
+    }()
+    
+    private lazy var cityCollectionView: UICollectionView = {
+        let cityCollectionView = UICollectionView(frame: CGRect.zero,
+                                                  collectionViewLayout: UICollectionViewFlowLayout.init())
+        let layout = UICollectionViewFlowLayout.init()
+        cityCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 10
+        cityCollectionView.setCollectionViewLayout(layout, animated: true)
+        return cityCollectionView
+    }()
     
     private lazy var viewModel: CityListDataSource = {
         return CityListViewModel(service: CityService(), delegate: self)
@@ -29,22 +55,21 @@ class CityListViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        let cityCollectionView = UICollectionView(frame: CGRect.zero,
-                                                   collectionViewLayout: UICollectionViewFlowLayout.init())
-        let layout = UICollectionViewFlowLayout.init()
-        cityCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 10
-        cityCollectionView.setCollectionViewLayout(layout, animated: true)
-        self.view.addSubview(cityCollectionView)
+        view.addSubview(cityCollectionView)
+        view.addSubview(favouritesLabel)
         
         NSLayoutConstraint.activate([
-            cityCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            cityCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor),
-            cityCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            cityCollectionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            favouritesLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                                 constant: Constants.Layout.margin),
+            favouritesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.Layout.margin/2),
+            favouritesLabel.widthAnchor.constraint(equalToConstant: Constants.Layout.labelWidht),
+            favouritesLabel.heightAnchor.constraint(equalToConstant: Constants.Layout.labelHeight),
+            
+            cityCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            cityCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            cityCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            cityCollectionView.topAnchor.constraint(equalTo: favouritesLabel.bottomAnchor, constant: Constants.Layout.margin)
         ])
-        self.cityCollectionView = cityCollectionView
     }
     
     override func viewDidLoad() {
